@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.titulohacienda{
+  padding-top: 20px;
+  font-size: 24px;
+  font-family: 'afta_sansregular';
+}
+@font-face {
+  font-family: 'afta_sansregular';
+  src: url('https://oficinavirtual.shd.gov.co/ICA/tipografia/AftaSansThin-Regular-webfont.eot');
+  src: url('https://oficinavirtual.shd.gov.co/ICA/tipografia/AftaSansThin-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://oficinavirtual.shd.gov.co/ICA/tipografia/AftaSansThin-Regular-webfont.woff') format('woff'),
+       url('https://oficinavirtual.shd.gov.co/ICA/tipografia/AftaSansThin-Regular-webfont.ttf') format('truetype'),
+       url('https://oficinavirtual.shd.gov.co/ICA/tipografia/AftaSansThin-Regular-webfont.svg#afta_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

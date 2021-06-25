@@ -1,0 +1,82 @@
+<div class="container">
+
+  <br/>
+  <div class="col-md-9">
+  <h4>
+    Listado de Actos publicados
+  </h4>
+
+    <div class="filtro">
+      <input type="search" id="txbuscar" [(ngModel)]="txtFiltro" placeholder="Texto a buscar" class="search-input"/>
+
+      <button type="button" class="btn btn-success" id="btbuscar" (click)="filtrar()">Aplicar</button>
+      <button type="button" class="btn btn-success" id="btnCrear" (click)="crear()">Crear acto</button>
+    </div>
+
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr >
+      <td>
+        Código
+      </td>
+      <td>
+        Descripción
+      </td>
+      <td>
+        Tipo Identificación
+      </td>
+      <td>
+        Identificación
+      </td>
+      <td>
+        Acciones
+      </td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dato of actos">
+      <td >{{dato.id}}</td>
+      <td >{{dato.descripcion}}</td>
+      <td >{{dato.tipoIdentificacion}}</td>
+      <td >{{dato.numeroIdentificacion}}</td>
+      <td ><button type="button" class="btn btn-success" id="btdetalle" (click)="onSelect(dato)">Detalle</button>
+      </td>
+
+
+    </tr>
+    </tbody>
+
+
+  </table>
+  </div>
+
+</div>
+<div *ngIf="selected">
+  <app-detalle [acto]="actoSeleccionado"></app-detalle>
+</div>
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="crearacto">
+  <app-crear-acto ></app-crear-acto>
+</div>

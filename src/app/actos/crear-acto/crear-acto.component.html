@@ -1,0 +1,134 @@
+<div class="container">
+  <h6 >Crear Acto oficial</h6>
+  <div class="form-group mx-sm-3 mb-2">
+    <form [formGroup]="actoOfForm" (ngSubmit)="!actoOfForm.invalid && crearActoOf(actoOfForm.value)">
+      <label for ="tipoIdentificacion" >
+        Tipo Identificación
+      </label>
+      <input novalidate id = "tipoIdentificacion" class="form-control" formControlName="tipoIdentificacion" placeholder="Tipo Identificación" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('tipoIdentificacion').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
+        Tipo identificación es requerido </div>
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('tipoIdentificacion').hasError('minlength')" >
+        Tipo identificación corto </div>
+      <label for ="numeroIdentificacion" >
+        Número Identificación
+      </label>
+      <input novalidate id = "numeroIdentificacion" class="form-control" formControlName="numeroIdentificacion" placeholder="Número identificación" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('numeroIdentificacion').hasError('required') && actoOfForm.get('numeroIdentificacion').touched" >
+        Número Identificación es requerido</div>
+      <label for ="descripcion" >
+        Descripción
+      </label>
+      <input novalidate id = "descripcion" class="form-control" formControlName="descripcion" placeholder="Descripción de acto oficial" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('descripcion').hasError('required') && actoOfForm.get('descripcion').touched" >
+        Descripción requerida</div>
+
+      <label for ="fechaPublicacion" >
+        Fecha Publicación
+      </label>
+      <input novalidate type="date" id = "fechaPublicacion" class="form-control" formControlName="fechaPublicacion" placeholder="Fecha Publicación" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('fechaPublicacion').hasError('required') && actoOfForm.get('fechaPublicacion').touched" >
+        Fecha Publicación requerida</div>
+      <label  >
+        Impuesto
+      </label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="predial" value="1" checked
+               formControlName="impuesto">
+        <label class="form-check-label" for="predial">
+          Predial
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="vehiculos" value="3"
+               formControlName="impuesto">
+        <label class="form-check-label" for="vehiculos">
+          Vehículos
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="ica" value="2"
+               formControlName="impuesto">
+        <label class="form-check-label" for="ica">
+          ICA
+        </label>
+      </div>
+      <label for ="vigencia" >
+        Vigencia
+      </label>
+      <input novalidate id = "vigencia" class="form-control" formControlName="vigencia" placeholder="vigencia" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('vigencia').hasError('required') && actoOfForm.get('vigencia').touched" >
+        Vigencia requerida</div>
+      <label for ="idObjeto" >
+        Chip / Placa
+      </label>
+      <input novalidate id = "idObjeto" class="form-control" formControlName="idObjeto" placeholder="Objeto del impuesto" >
+      <div class="alert alert-danger alert-dismissible fade show"
+           *ngIf="actoOfForm.get('idObjeto').hasError('required') && actoOfForm.get('idObjeto').touched" >
+        El objeto es requerido</div>
+      <label  >
+        Período
+      </label>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="b1" value="1" checked
+               formControlName="periodo">
+        <label class="form-check-label" for="b1">
+          Bimestre enero-febrero
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="b2" value="2"
+               formControlName="periodo">
+        <label class="form-check-label" for="b2">
+          Bimestre marzo-abril
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="b3" value="3"
+               formControlName="periodo">
+        <label class="form-check-label" for="b3">
+          Bimestre mayo-junio
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="b4" value="4"
+               formControlName="periodo">
+        <label class="form-check-label" for="b4">
+          Bimestre julio-agosto
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="b5" value="5"
+               formControlName="periodo">
+        <label class="form-check-label" for="b5">
+          Bimestre septiembre-octubre
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="b6" value="6"
+               formControlName="periodo">
+        <label class="form-check-label" for="b6">
+          Bimestre noviembre-diciembre
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"  id="b7" value="7"
+               formControlName="periodo">
+        <label class="form-check-label" for="b7">
+          Anual
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!actoOfForm.valid" >Crear</button>
+      <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+    </form>
+
+  </div>
+</div>
