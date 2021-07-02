@@ -8,29 +8,45 @@ enum Impuesto{
 
 export class Acto {
   id: number;
+  numResolucion: string;
+  numRadicado: string;
+  numExpediente: string;
   descripcion: string;
-  tipoIdentificacion: string;
   numeroIdentificacion: string;
+  tipoIdentificacion: string;
+  nombreContribuyente: string;
   impuesto: number;
+  objeto: string;
+  tipoActo: string;
+  fechaActo: Date;
   vigencia: number;
+  direccionNotificacion: string;
+  fechaDevolucion: Date;
+  causalDevolucion: string;
+  medioPublicacion: string;
   fechaPublicacion: Date;
-  idObjeto: string;
   periodo: number;
 
 
-
-  constructor(id: number, descripcion: string, tipoIdentificacion: string, numeroIdentificacion: string,
-              impuesto: Impuesto, vigencia: number, fechaPublicacion: Date, idObjeto: string, periodo: number) {
+  constructor(id: number, numResolucion: string, numRadicado: string, numExpediente: string, descripcion: string, numeroIdentificacion: string, tipoIdentificacion: string, nombreContribuyente: string, impuesto: number, objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date, causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number) {
     this.id = id;
+    this.numResolucion = numResolucion;
+    this.numRadicado = numRadicado;
+    this.numExpediente = numExpediente;
     this.descripcion = descripcion;
-    this.tipoIdentificacion = tipoIdentificacion;
     this.numeroIdentificacion = numeroIdentificacion;
+    this.tipoIdentificacion = tipoIdentificacion;
+    this.nombreContribuyente = nombreContribuyente;
     this.impuesto = impuesto;
+    this.objeto = objeto;
+    this.tipoActo = tipoActo;
+    this.fechaActo = fechaActo;
     this.vigencia = vigencia;
+    this.direccionNotificacion = direccionNotificacion;
+    this.fechaDevolucion = fechaDevolucion;
+    this.causalDevolucion = causalDevolucion;
+    this.medioPublicacion = medioPublicacion;
     this.fechaPublicacion = fechaPublicacion;
-    this.idObjeto= idObjeto;
     this.periodo = periodo;
-
   }
-
 }

@@ -6,12 +6,15 @@ import { DetalleComponent } from './detalle/detalle.component';
 import {CrearActoComponent} from './crear-acto/crear-acto.component';
 import { AutenticadorComponent } from './autenticador/autenticador.component';
 import {ActosRoutingModule} from './actos-routing.module';
+import { CrearActosComponent } from './crear-actos/crear-actos.component';
+import { MenuComponent } from './menu/menu.component';
+
 
 
 
 
 @NgModule({
-  declarations: [ActosComponent, DetalleComponent, CrearActoComponent, AutenticadorComponent],
+  declarations: [ActosComponent, DetalleComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent],
   imports: [
     ActosRoutingModule,
     CommonModule,
@@ -19,6 +22,6 @@ import {ActosRoutingModule} from './actos-routing.module';
     ReactiveFormsModule
 
   ],
-  exports: [ActosComponent, CrearActoComponent, AutenticadorComponent]
+  exports: [ActosComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent]
 })
 export class ActosModule { }

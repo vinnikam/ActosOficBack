@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {Acto} from '../dtos/acto';
 import {HttpClient} from '@angular/common/http';
-import {Observable,throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {catchError} from "rxjs/operators";
 import {environment} from '../../environments/environment';
 import {Funcionario} from '../dtos/funcionario';
@@ -16,6 +16,9 @@ export class ActosService {
   urlActos = environment.urlActos;
   urlActosNew = environment.urlActosNew;
   urlLoginFuncionario = environment.urlAutenticar;
+
+  funcionarioActivo = new BehaviorSubject<Funcionario>(null);
+
 
   constructor(private http: HttpClient) { }
 

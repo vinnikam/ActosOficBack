@@ -16,16 +16,29 @@ export class CrearActoComponent implements OnInit {
 
   ngOnInit(): void {
     this.actoOfForm = this.fbuilder.group({
+      numResolucion: ["", Validators.required],
+      numRadicado: ["", Validators.required],
+      numExpediente: ["", Validators.required],
       descripcion: ["", Validators.required],
       tipoIdentificacion: ["", Validators.required],
       numeroIdentificacion: ["", Validators.required],
+      nombreContribuyente: ["", Validators.required],
       impuesto: [1, Validators.required],
+      objeto: ["", Validators.required],
+      tipoActo: ["", Validators.required],
+      fechaActo: ["", Validators.required],
       vigencia: [2021, Validators.required],
-      idObjeto: ["", Validators.required],
-      periodo: [7, Validators.required],
-      fechaPublicacion: new FormControl( "", [ Validators.required ])
+      direccionNotificacion: ["", Validators.required],
+      fechaDevolucion: [""],
+      causalDevolucion: [""],
+      medioPublicacion: ["", Validators.required],
+      fechaPublicacion:  ["", Validators.required],
+      periodo: [7, Validators.required]
     });
   }
+
+
+
   crearActoOf(nuevoActoOf: Acto): void {
     console.warn("Acto Oficial creado", nuevoActoOf);
     this.showSuccess(nuevoActoOf);

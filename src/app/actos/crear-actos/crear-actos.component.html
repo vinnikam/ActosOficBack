@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<div>
+  <p>Archivo para cargar actos </p>
+
+  <input type="file" (change)="cargarArchivo($event)" multiple="false" accept=".xlsx" placeholder="Seleccione el archivo con los datos. "/>
+
+  <table>
+    <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let cell of row">
+        {{cell}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="procesar">
+    <p>Total de registros para procesar : {{registros}}</p>
+    <button type="button" class="btn btn-info" (click)="Upload()" >Procesar </button>
+  </div>
+
+</div>
