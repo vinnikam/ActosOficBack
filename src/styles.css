@@ -13,3 +13,11 @@
   font-weight: normal;
   font-style: normal;
 }
+th {
+  font-size: 12px !important;
+  color: black !important;
+}
+td {
+  font-size: 14px !important;
+  color: black !important;
+}

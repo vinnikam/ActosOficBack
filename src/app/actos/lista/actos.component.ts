@@ -14,14 +14,17 @@ export class ActosComponent implements OnInit {
   actos: Array<Acto>;
   actosO: Array<Acto>;
 
-  selected= false;
+  selected = false;
   crearacto = false;
   actoSeleccionado: Acto;
+  displayBasic: boolean;
+  tituloDialog: string;
 
   constructor(public actosService: ActosService) { }
 
   ngOnInit(): void {
     this.getActos();
+    this.tituloDialog = 'Expediente';
   }
   getActos(): void {
     this.actosService.getActos()
@@ -33,10 +36,10 @@ export class ActosComponent implements OnInit {
   }
   filtrar(){
     console.log('Ingresar ' + this.txtFiltro);
-    if (this.txtFiltro == null || this.txtFiltro == ""){
+    if (this.txtFiltro == null || this.txtFiltro === '') {
       this.actos = this.actosO;
     } else {
-      this.actos =  this.actos.filter(c=>c.numeroIdentificacion.match(this.txtFiltro));
+      this.actos =  this.actos.filter(c => c.numeroIdentificacion.match(this.txtFiltro));
 
     }
 
@@ -45,10 +48,16 @@ export class ActosComponent implements OnInit {
     this.crearacto = true;
     this.selected = false;
   }
-  onSelect(acto:Acto): void {
+  onSelect(acto: Acto ): void {
     this.selected = true;
     this.crearacto = false;
     this.actoSeleccionado = acto;
+    this.displayBasic = true;
+    this.tituloDialog = 'Expediente :' + this.actoSeleccionado.numExpediente;
 
   }
- }
+
+  showBasicDialog() {
+    this.displayBasic = true;
+  }
+}

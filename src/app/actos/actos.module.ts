@@ -8,7 +8,11 @@ import { AutenticadorComponent } from './autenticador/autenticador.component';
 import {ActosRoutingModule} from './actos-routing.module';
 import { CrearActosComponent } from './crear-actos/crear-actos.component';
 import { MenuComponent } from './menu/menu.component';
-
+import {TableModule} from 'primeng/table';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {MenubarModule} from 'primeng/menubar';
 
 
 
@@ -19,7 +23,12 @@ import { MenuComponent } from './menu/menu.component';
     ActosRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    TableModule,
+    DialogModule,
+    ButtonModule,
+    MenubarModule
 
   ],
   exports: [ActosComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent]
