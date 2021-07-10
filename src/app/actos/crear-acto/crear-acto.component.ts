@@ -23,17 +23,19 @@ export class CrearActoComponent implements OnInit {
       tipoIdentificacion: ["", Validators.required],
       numeroIdentificacion: ["", Validators.required],
       nombreContribuyente: ["", Validators.required],
-      impuesto: [1, Validators.required],
+      impuesto: [-1, Validators.required],
       objeto: ["", Validators.required],
-      tipoActo: ["", Validators.required],
+      tipoActo: [-1, Validators.required],
       fechaActo: ["", Validators.required],
-      vigencia: [2021, Validators.required],
+      vigencia: ["", [Validators.required, Validators.maxLength(4), Validators.pattern("^[0-9]*$")]],
       direccionNotificacion: ["", Validators.required],
       fechaDevolucion: [""],
       causalDevolucion: [""],
-      medioPublicacion: ["", Validators.required],
+      medioPublicacion: [-1, Validators.required],
       fechaPublicacion:  ["", Validators.required],
-      periodo: [7, Validators.required]
+      periodo: [-1, Validators.required],
+      urlPdf: [""],
+      referenciaPdf: [""],
     });
   }
 
@@ -42,7 +44,7 @@ export class CrearActoComponent implements OnInit {
   crearActoOf(nuevoActoOf: Acto): void {
     console.warn("Acto Oficial creado", nuevoActoOf);
     this.showSuccess(nuevoActoOf);
-    this.actosService.crearBanda(nuevoActoOf).subscribe(client => {
+    this.actosService.crearActo(nuevoActoOf).subscribe(client => {
       //this.clientes.push(client);
       this.showSuccess(nuevoActoOf);
     });
@@ -59,7 +61,7 @@ export class CrearActoComponent implements OnInit {
   */
   }
   cancelar(): void {
-    console.log("Cancela creación Músico ");
+    console.log("Cancela creación Acto ");
     this.actoOfForm.reset();
   }
 

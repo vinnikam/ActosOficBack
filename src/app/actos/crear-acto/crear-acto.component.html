@@ -1,207 +1,246 @@
 <app-menu></app-menu>
-<div class="container">
-  <h6 >Crear Acto oficial</h6>
-  <div class="form-group mx-sm-3 mb-2">
-    <form [formGroup]="actoOfForm" (ngSubmit)="!actoOfForm.invalid && crearActoOf(actoOfForm.value)">
-      <label for ="numResolucion" >
-        Número Resolución
-      </label>
-      <input novalidate id = "numResolucion" class="form-control" formControlName="numResolucion" placeholder="Número Resolución" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('numResolucion').hasError('required') && actoOfForm.get('numResolucion').touched" >
-        Número Resolución es requerido </div>
-      <label for ="numRadicado" >
-        Número de Radicado
-      </label>
-      <input novalidate id = "numRadicado" class="form-control" formControlName="numRadicado" placeholder="Número de Radicado" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('numRadicado').hasError('required') && actoOfForm.get('numRadicado').touched" >
-        Número de Radicado es requerido </div>
-      <label for ="numExpediente" >
-        Número de Expediente
-      </label>
-      <input novalidate id = "numExpediente" class="form-control" formControlName="numExpediente" placeholder="Número de Expediente" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('numExpediente').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
-        Número de Expediente es requerido </div>
-      <label for ="descripcion" >
-        Descripción
-      </label>
-      <textarea novalidate id = "descripcion" class="form-control" formControlName="descripcion" placeholder="Descripción de acto oficial" ></textarea>
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('descripcion').hasError('required') && actoOfForm.get('descripcion').touched" >
-        Descripción requerida</div>
-      <label for ="tipoIdentificacion" >
-        Tipo Identificación
-      </label>
-      <input novalidate id = "tipoIdentificacion" class="form-control" formControlName="tipoIdentificacion" placeholder="Tipo Identificación" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('tipoIdentificacion').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
-        Tipo identificación es requerido </div>
-      <label for ="numeroIdentificacion" >
-        Número Identificación
-      </label>
-      <input novalidate id = "numeroIdentificacion" class="form-control" formControlName="numeroIdentificacion" placeholder="Número identificación" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('numeroIdentificacion').hasError('required') && actoOfForm.get('numeroIdentificacion').touched" >
-        Número Identificación es requerido</div>
-      <label for ="nombreContribuyente" >
-        Nombre Contribuyente y/o apoderado
-      </label>
-      <input novalidate id = "nombreContribuyente" class="form-control" formControlName="nombreContribuyente" placeholder="Nombre Contribuyente y/o apoderado" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('nombreContribuyente').hasError('required') && actoOfForm.get('nombreContribuyente').touched" >
-        Nombre Contribuyente y/o apoderado</div>
-      <label  >
-        Impuesto
-      </label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="predial" value="1" checked
-               formControlName="impuesto">
-        <label class="form-check-label" for="predial">
-          Predial
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="vehiculos" value="3"
-               formControlName="impuesto">
-        <label class="form-check-label" for="vehiculos">
-          Vehículos
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="ica" value="2"
-               formControlName="impuesto">
-        <label class="form-check-label" for="ica">
-          ICA
-        </label>
-      </div>
-      <label for ="objeto" >
-        Chip / Placa
-      </label>
-      <input novalidate id = "objeto" class="form-control" formControlName="objeto" placeholder="Objeto del impuesto" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('objeto').hasError('required') && actoOfForm.get('objeto').touched" >
-        El objeto es requerido</div>
-      <label for ="tipoActo" >
-        Tipo Acto
-      </label>
-      <input novalidate id = "tipoActo" class="form-control" formControlName="tipoActo" placeholder="Tipo Acto" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('tipoActo').hasError('required') && actoOfForm.get('tipoActo').touched" >
-        Tipo Acto es requerido</div>
-      <label for ="fechaActo" >
-        Fecha acto
-      </label>
-      <input novalidate type="date" id = "fechaActo" class="form-control" formControlName="fechaActo" placeholder="Fecha acto" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('fechaActo').hasError('required') && actoOfForm.get('fechaActo').touched" >
-        Fecha acto requerida</div>
-      <label for ="vigencia" >
-        Vigencia
-      </label>
-      <input novalidate id = "vigencia" class="form-control" formControlName="vigencia" placeholder="vigencia" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('vigencia').hasError('required') && actoOfForm.get('vigencia').touched" >
-        Vigencia requerida</div>
 
-      <label for ="direccionNotificacion" >
-        Dirección Notificación
-      </label>
-      <input novalidate id = "direccionNotificacion" class="form-control" formControlName="direccionNotificacion" placeholder="Dirección Notificación" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('direccionNotificacion').hasError('required') && actoOfForm.get('direccionNotificacion').touched" >
-        Dirección Notificación requerida</div>
-      <label for ="fechaDevolucion" >
-        Fecha devolución
-      </label>
-      <input novalidate type="date" id = "fechaDevolucion" class="form-control" formControlName="fechaDevolucion" placeholder="Fecha devolución" >
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <form [formGroup]="actoOfForm" (ngSubmit)="!actoOfForm.invalid && crearActoOf(actoOfForm.value)">
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for ="numResolucion" >
+              Número Resolución
+            </label>
+            <input novalidate id = "numResolucion" class="form-control" formControlName="numResolucion" placeholder="Número Resolución" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('numResolucion').hasError('required') && actoOfForm.get('numResolucion').touched" >
+              Número Resolución es requerido </div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numRadicado" >
+              Número de Radicado
+            </label>
+            <input novalidate id = "numRadicado" class="form-control" formControlName="numRadicado" placeholder="Número de Radicado" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('numRadicado').hasError('required') && actoOfForm.get('numRadicado').touched" >
+              Número de Radicado es requerido </div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numExpediente" >
+              Número de Expediente
+            </label>
+            <input novalidate id = "numExpediente" class="form-control" formControlName="numExpediente" placeholder="Número de Expediente" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('numExpediente').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
+              Número de Expediente es requerido </div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="descripcion" >
+              Descripción
+            </label>
+            <textarea novalidate id = "descripcion" class="form-control" formControlName="descripcion" placeholder="Descripción de acto oficial" ></textarea>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('descripcion').hasError('required') && actoOfForm.get('descripcion').touched" >
+              Descripción requerida</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="fechaActo" >
+              Fecha acto
+            </label>
+            <input novalidate type="date" id = "fechaActo" class="form-control" formControlName="fechaActo" placeholder="Fecha acto" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('fechaActo').hasError('required') && actoOfForm.get('fechaActo').touched" >
+              Fecha acto requerida</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="tipoActo" >
+              Tipo Acto
+            </label>
+            <select id="tipoActo" class="form-select" formControlName="tipoActo" >
+              <option value="-1" selected>Seleccione un tipo de acto</option>
+              <option value="Resolución de devolución y/o compensación">Resolución de devolución y/o compensación</option>
+              <option value="Resolución reducción sanción">Resolución reducción sanción</option>
+              <option value="Resolución sanción por no enviar información">Resolución sanción por no enviar información</option>
+              <option value="Otra">Otra</option>
+            </select>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('tipoActo').hasError('required') && actoOfForm.get('tipoActo').touched" >
+              Tipo Acto es requerido</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="vigencia" >
+              Vigencia
+            </label>
+            <input novalidate id = "vigencia" class="form-control" formControlName="vigencia" placeholder="vigencia" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('vigencia').hasError('required') && actoOfForm.get('vigencia').touched" >
+              Vigencia requerida</div>
+            <div
+              class="alert alert-danger alert-dismissible fade show"
+              *ngIf="actoOfForm.get('vigencia').hasError('maxlength') &&
+                      actoOfForm.get('vigencia').touched">
+              La vigencia debe tener máximo 4 caractéres
+            </div>
+            <div
+              class="alert alert-danger alert-dismissible fade show"
+              *ngIf="actoOfForm.get('vigencia').hasError('pattern') &&
+                      actoOfForm.get('vigencia').touched">
+              Debe contener solo números
+            </div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6">
+            <label for ="tipoIdentificacion" >
+              Tipo Identificación
+            </label>
+            <select id="tipoIdentificacion" class="form-select" formControlName="tipoIdentificacion" >
+              <option value="-1" selected>Seleccione un tipo de identificación</option>
+              <option value="C.C.">Cédula de Ciudadanía</option>
+              <option value="N.I.T.">Número de identificación tributaria</option>
+            </select>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('tipoIdentificacion').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
+              Tipo identificación es requerido </div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numeroIdentificacion" >
+              Número Identificación
+            </label>
+            <input id = "numeroIdentificacion" class="form-control" formControlName="numeroIdentificacion" placeholder="Número identificación" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('numeroIdentificacion').hasError('required') && actoOfForm.get('numeroIdentificacion').touched" >
+              Número Identificación es requerido</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="nombreContribuyente" >
+              Nombre Contribuyente y/o apoderado
+            </label>
+            <input id = "nombreContribuyente" class="form-control" formControlName="nombreContribuyente" placeholder="Nombre Contribuyente y/o apoderado" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('nombreContribuyente').hasError('required') && actoOfForm.get('nombreContribuyente').touched" >
+              Nombre Contribuyente y/o apoderado</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="direccionNotificacion" >
+              Dirección Notificación
+            </label>
+            <input id = "direccionNotificacion" class="form-control" formControlName="direccionNotificacion" placeholder="Dirección Notificación" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('direccionNotificacion').hasError('required') && actoOfForm.get('direccionNotificacion').touched" >
+              Dirección Notificación requerida</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for="impuesto" >
+              Impuesto
+            </label>
+            <select id="impuesto" class="form-select" formControlName="impuesto">
+              <option value="-1" selected>Seleccione un impuesto</option>
+              <option value="PREDIAL">PREDIAL</option>
+              <option value="VEHICULOS">VEHICULOS</option>
+              <option value="ICA">ICA</option>
+              <option value="NINGUNO">NINGUNO</option>
+            </select>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('impuesto').hasError('required') && actoOfForm.get('impuesto').touched" >
+              Impuesto es requerido</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="objeto" >
+              Chip / Placa
+            </label>
+            <input novalidate id = "objeto" class="form-control" formControlName="objeto" placeholder="Objeto del impuesto" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('objeto').hasError('required') && actoOfForm.get('objeto').touched" >
+              El objeto es requerido</div>
+            <hr>
+          </div>
 
-      <label for ="causalDevolucion" >
-        Causal Devolución
-      </label>
-      <input novalidate id = "causalDevolucion" class="form-control" formControlName="causalDevolucion" placeholder="Causal Devolución" >
-      <label  >
-        Medio Publicacion
-      </label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="opc1" value="Registro Distrital" checked
-               formControlName="medioPublicacion">
-        <label class="form-check-label" for="opc1">
-          Registro Distrital
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="opc2" value="Diario de Amplia Circulación"
-               formControlName="medioPublicacion">
-        <label class="form-check-label" for="opc2">
-          Diario de Amplia Circulación
-        </label>
-      </div>
-      <label for ="fechaPublicacion" >
-        Fecha Publicación
-      </label>
-      <input novalidate type="date" id = "fechaPublicacion" class="form-control" formControlName="fechaPublicacion" placeholder="Fecha Publicación" >
-      <div class="alert alert-danger alert-dismissible fade show"
-           *ngIf="actoOfForm.get('fechaPublicacion').hasError('required') && actoOfForm.get('fechaPublicacion').touched" >
-        Fecha Publicación requerida</div>
-      <label  >
-        Período
-      </label>
+          <div class="col-sm-6">
+            <label for ="fechaDevolucion" >
+              Fecha devolución
+            </label>
+            <input novalidate type="date" id = "fechaDevolucion" class="form-control" formControlName="fechaDevolucion" placeholder="Fecha devolución" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="causalDevolucion" >
+              Causal Devolución
+            </label>
+            <input novalidate id = "causalDevolucion" class="form-control" formControlName="causalDevolucion" placeholder="Causal Devolución" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for="medioPublicacion" >
+              Medio Publicacion
+            </label>
+            <select id="medioPublicacion" class="form-select" formControlName="medioPublicacion" >
+              <option value="-1" selected>Seleccione un medio de publicación</option>
+              <option value="Registro Distrital">Registro Distrital</option>
+              <option value="Diario de Amplia Circulación">Diario de Amplia Circulación</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="fechaPublicacion" >
+              Fecha Publicación
+            </label>
+            <input type="date" id = "fechaPublicacion" class="form-control" formControlName="fechaPublicacion" placeholder="Fecha Publicación" >
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('fechaPublicacion').hasError('required') && actoOfForm.get('fechaPublicacion').touched" >
+              Fecha Publicación requerida</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label  >
+              Período
+            </label>
+            <select novalidate id="periodo" class="form-select" formControlName="periodo" >
+              <option value="-1" selected>Seleccione un periodo</option>
+              <option value="1">Bimestre enero-febrero</option>
+              <option value="2">Bimestre marzo-abril</option>
+              <option value="3">Bimestre mayo-junio</option>
+              <option value="4">Bimestre julio-agosto</option>
+              <option value="5">Bimestre septiembre-octubre</option>
+              <option value="6">Bimestre noviembre-diciembre</option>
+              <option value="7">Anual</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="urlPdf" >
+              Url del archivo Pdf asociado al Acto Oficial.
+            </label>
+            <input id = "urlPdf" class="form-control" formControlName="urlPdf" placeholder="Selecciones la ruta donde esta el pdf asociado al Acto. " >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="referenciaPdf" >
+              Referencia para encontrar el Acto en el PDF
+            </label>
+            <input id = "referenciaPdf" class="form-control" formControlName="referenciaPdf" placeholder="Escriba la referencia para encontrar el Acto en el PDF" >
+            <hr>
+          </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="b1" value="1" checked
-               formControlName="periodo">
-        <label class="form-check-label" for="b1">
-          Bimestre enero-febrero
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="b2" value="2"
-               formControlName="periodo">
-        <label class="form-check-label" for="b2">
-          Bimestre marzo-abril
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="b3" value="3"
-               formControlName="periodo">
-        <label class="form-check-label" for="b3">
-          Bimestre mayo-junio
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="b4" value="4"
-               formControlName="periodo">
-        <label class="form-check-label" for="b4">
-          Bimestre julio-agosto
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="b5" value="5"
-               formControlName="periodo">
-        <label class="form-check-label" for="b5">
-          Bimestre septiembre-octubre
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="b6" value="6"
-               formControlName="periodo">
-        <label class="form-check-label" for="b6">
-          Bimestre noviembre-diciembre
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"  id="b7" value="7"
-               formControlName="periodo">
-        <label class="form-check-label" for="b7">
-          Anual
-        </label>
-      </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!actoOfForm.valid" >Crear</button>
-      <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
-    </form>
-
+        </div>
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" [disabled]="!actoOfForm.valid" >Crear</button>
+          <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+

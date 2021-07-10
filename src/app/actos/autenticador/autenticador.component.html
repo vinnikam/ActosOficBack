@@ -1,10 +1,11 @@
-<div class="container">
-  <div class="form-group mx-sm-3 mb-2">
+<div class="container-fluid">
+
+    <div class="col-4 p-3">
     <h6 >Autenticar Funcionario</h6>
 
     <form [formGroup]="autentForm" (ngSubmit)="!autentForm.invalid && autenticar(autentForm.value)">
       <label for ="usuario" >
-        Tipo Identificación
+        Nombre de usuario
       </label>
       <input novalidate id = "usuario" class="form-control" formControlName="usuario" placeholder="usuario" >
       <div class="alert alert-danger alert-dismissible fade show"
@@ -16,33 +17,11 @@
       <input  type="password" novalidate id = "clave" class="form-control" formControlName="clave" placeholder="clave" >
       <div class="alert alert-danger alert-dismissible fade show"
            *ngIf="autentForm.get('clave').hasError('required') && autentForm.get('clave').touched" >
-        clave es requerido </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!autentForm.valid" >Crear</button>
-      <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+        clave es requerida </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!autentForm.valid" >Ingresar</button>
+      <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >volver</button>
 
     </form>
   </div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>

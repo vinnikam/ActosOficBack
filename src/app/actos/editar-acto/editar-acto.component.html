@@ -1,0 +1,193 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for ="numResolucion" >
+              Número Resolución
+            </label>
+            <input id = "numResolucion" class="form-control" [(ngModel)]="actoed.numResolucion" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numRadicado" >
+              Número de Radicado
+            </label>
+            <input id = "numRadicado" class="form-control" [(ngModel)]="actoed.numRadicado" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numExpediente" >
+              Número de Expediente
+            </label>
+            <input id = "numExpediente" class="form-control" [(ngModel)]="actoed.numRadicado" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="descripcion" >
+              Descripción
+            </label>
+            <textarea id = "descripcion" class="form-control" [(ngModel)]="actoed.descripcion" ></textarea>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="fechaActo" >
+              Fecha acto
+            </label>
+            <input  type="date" id = "fechaActo" class="form-control" [(ngModel)]="actoed.fechaActo" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="tipoActo" >
+              Tipo Acto
+            </label>
+            <select id="tipoActo" class="form-select" [(ngModel)]="actoed.tipoActo" >
+              <option value="-1" selected>Seleccione un tipo de acto</option>
+              <option value="Resolución de devolución y/o compensación">Resolución de devolución y/o compensación</option>
+              <option value="Resolución reducción sanción">Resolución reducción sanción</option>
+              <option value="Resolución sanción por no enviar información">Resolución sanción por no enviar información</option>
+              <option value="Otra">Otra</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="vigencia" >
+              Vigencia
+            </label>
+            <input novalidate id = "vigencia" class="form-control" [(ngModel)]="actoed.vigencia" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6">
+            <label for ="tipoIdentificacion" >
+              Tipo Identificación
+            </label>
+            <select id="tipoIdentificacion" class="form-select" [(ngModel)]="actoed.tipoIdentificacion" >
+              <option value="-1" selected>Seleccione un tipo de identificación</option>
+              <option value="C.C.">Cédula de Ciudadanía</option>
+              <option value="N.I.T.">Número de identificación tributaria</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="numeroIdentificacion" >
+              Número Identificación
+            </label>
+            <input id = "numeroIdentificacion" class="form-control" [(ngModel)]="actoed.numeroIdentificacion" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="nombreContribuyente" >
+              Nombre Contribuyente y/o apoderado
+            </label>
+            <input id = "nombreContribuyente" class="form-control" [(ngModel)]="actoed.numeroIdentificacion" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="direccionNotificacion" >
+              Dirección Notificación
+            </label>
+            <input id = "direccionNotificacion" class="form-control" [(ngModel)]="actoed.direccionNotificacion" >
+
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for="impuesto" >
+              Impuesto
+            </label>
+            <select id="impuesto" class="form-select" [(ngModel)]="actoed.impuesto">
+              <option value="-1" selected>Seleccione un impuesto</option>
+              <option value="PREDIAL">PREDIAL</option>
+              <option value="VEHICULOS">VEHICULOS</option>
+              <option value="ICA">ICA</option>
+              <option value="NINGUNO">NINGUNO</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="objeto" >
+              Chip / Placa
+            </label>
+            <input novalidate id = "objeto" class="form-control" [(ngModel)]="actoed.objeto" >
+            <hr>
+          </div>
+
+          <div class="col-sm-6">
+            <label for ="fechaDevolucion" >
+              Fecha devolución
+            </label>
+            <input novalidate type="date" id = "fechaDevolucion" class="form-control" [(ngModel)]="actoed.fechaDevolucion" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="causalDevolucion" >
+              Causal Devolución
+            </label>
+            <input novalidate id = "causalDevolucion" class="form-control" [(ngModel)]="actoed.causalDevolucion" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for="medioPublicacion" >
+              Medio Publicacion
+            </label>
+            <select id="medioPublicacion" class="form-select" [(ngModel)]="actoed.medioPublicacion" >
+              <option value="-1" selected>Seleccione un medio de publicación</option>
+              <option value="Registro Distrital">Registro Distrital</option>
+              <option value="Diario de Amplia Circulación">Diario de Amplia Circulación</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="fechaPublicacion" >
+              Fecha Publicación
+            </label>
+            <input type="date" id = "fechaPublicacion" class="form-control" [(ngModel)]="actoed.fechaPublicacion" >
+
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label  >
+              Período
+            </label>
+            <select novalidate id="periodo" class="form-select" [(ngModel)]="actoed.periodo" >
+              <option value="-1" selected>Seleccione un periodo</option>
+              <option value="1">Bimestre enero-febrero</option>
+              <option value="2">Bimestre marzo-abril</option>
+              <option value="3">Bimestre mayo-junio</option>
+              <option value="4">Bimestre julio-agosto</option>
+              <option value="5">Bimestre septiembre-octubre</option>
+              <option value="6">Bimestre noviembre-diciembre</option>
+              <option value="7">Anual</option>
+            </select>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="urlPdf" >
+              Url del archivo Pdf asociado al Acto Oficial.
+            </label>
+            <input id = "urlPdf" class="form-control" [(ngModel)]="actoed.urlPdf" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="referenciaPdf" >
+              Referencia para encontrar el Acto en el PDF
+            </label>
+            <input id = "referenciaPdf" class="form-control" [(ngModel)]="actoed.referenciaPdf" >
+            <hr>
+          </div>
+
+
+        </div>
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+          <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+

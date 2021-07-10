@@ -41,7 +41,7 @@ export class AutenticadorComponent implements OnInit {
     this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {});
   }
   cancelar(): void {}
-  showSuccess(mensaje: string): void {
+    showSuccess(mensaje: string): void {
     this.toastrService.success(mensaje);
   }
   warningSuccess(mensaje: string): void {

@@ -25,6 +25,7 @@
 
           <th>Identificación</th>
           <th>Contribuyente / Apoderado</th>
+          <th>Pdf Asociado</th>
           <th>Acciones</th>
         </tr>
       </ng-template>
@@ -36,8 +37,9 @@
           <td >{{dato.numExpediente}}</td>
           <td >{{dato.tipoIdentificacion}}-{{dato.numeroIdentificacion}}</td>
           <td >{{dato.nombreContribuyente}}</td>
+          <td ><a href="{{dato.urlPdf}}" target="_blank">Descargue el archivo y {{dato.referenciaPdf}}</a> </td>
           <td ><button type="button" class="btn btn-success" id="btdetalle1"   data-toggle="modal" data-target="#exampleModal" (click)="onSelect(dato)">Detalle</button>
-
+            <button *ngIf="funcionarioActivo" type="button" class="btn btn-success" id="bteditar"   data-toggle="modal" data-target="#exampleModalEd" (click)="editar(dato)">Editar</button>
           </td>
         </tr>
       </ng-template>
@@ -60,6 +62,10 @@
   </p-footer>
 </p-dialog>
 
-<div *ngIf="crearacto">
-  <app-crear-acto ></app-crear-acto>
-</div>
+<p-dialog header="{{tituloDialog}}" [(visible)]="displayBasicEd" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <app-editar-acto [actoed]="actoSeleccionado"></app-editar-acto>
+  <p-footer>
+
+    <button type="button" class="btn btn-primary" id="salir1"   data-toggle="modal" data-target="#exampleModal" (click)="displayBasicEd=false">Cerrar</button>
+  </p-footer>
+</p-dialog>

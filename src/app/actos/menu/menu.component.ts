@@ -3,6 +3,7 @@ import {ActosService} from '../actos.service';
 import {Subscription} from 'rxjs';
 import {Funcionario} from '../../dtos/funcionario';
 import {MenuItem} from 'primeng/api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,7 @@ export class MenuComponent implements OnInit {
   funcionarioActivo =  false;
   funcionarioSubscription: Subscription;
   funcioActivo   : Funcionario;
-  constructor(private actoServic: ActosService) { }
+  constructor(private actoServic: ActosService, private router: Router) { }
   items: MenuItem[];
 
   ngOnInit(): void {
@@ -30,11 +31,20 @@ export class MenuComponent implements OnInit {
         label: 'Actos',
         icon: 'pi pi-fw pi-file-o',
         items: [
-          {label: 'Listado de Actos publicados', icon: 'pi pi-fw pi-copy', routerLink: '/actos/lista'},
-          {label: 'Ingresar como Funcionario', icon: 'pi pi-fw pi-user', routerLink: '/actos/autenticar'}
+          {label: 'Listado de Actos publicados', icon: 'pi pi-fw pi-copy', routerLink: '/actos/lista'}
         ]
       }
     ];
+    if (this.funcionarioActivo){
+      this.items.push({
+        label: 'Operaciones Funcionario',
+        icon: 'pi pi-fw pi-file-o',
+        items: [
+          {label: 'Crear actos individual', icon: 'pi pi-fw pi-copy', routerLink: '/actos/crear'},
+          {label: 'Crear actos desde Archivo', icon: 'pi pi-fw pi-user', routerLink: '/actos/crearm'}
+        ]
+      });
+    }
   }
   ngOnDestroy(): void {
     this.funcionarioSubscription.unsubscribe();
@@ -44,6 +54,7 @@ export class MenuComponent implements OnInit {
     this.funcioActivo = null;
     this.funcionarioActivo = false;
     this.actoServic.funcionarioActivo.next(this.funcioActivo);
+    this.router.navigate(['/']);
 
   }
 }

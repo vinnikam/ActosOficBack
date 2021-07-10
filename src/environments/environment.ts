@@ -10,7 +10,8 @@ export const environment = {
   production: false,
   urlAutenticar: `${hostAU}ServiciosRITDQ/resources/consultas/autenticar`,
   urlActos: `${host}actos/`,
-  urlActosNew: `${host}actos/guardar`
+  urlActosNew: `${host}actos/guardar`,
+  urlActosEditar: `${host}actos/editar`
 
 
 };

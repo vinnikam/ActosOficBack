@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActosService} from '../actos.service';
 import {Acto} from '../../dtos/acto';
+import {Subscription} from 'rxjs';
+import {Funcionario} from '../../dtos/funcionario';
 
 @Component({
   selector: 'app-actos',
@@ -8,6 +10,10 @@ import {Acto} from '../../dtos/acto';
   styleUrls: ['./actos.component.css']
 })
 export class ActosComponent implements OnInit {
+
+  funcionarioActivo =  false;
+  funcionarioSubscription: Subscription;
+  funcioActivo   : Funcionario;
 
   public txtFiltro: string = null;
 
@@ -18,6 +24,7 @@ export class ActosComponent implements OnInit {
   crearacto = false;
   actoSeleccionado: Acto;
   displayBasic: boolean;
+  displayBasicEd : boolean;
   tituloDialog: string;
 
   constructor(public actosService: ActosService) { }
@@ -25,6 +32,14 @@ export class ActosComponent implements OnInit {
   ngOnInit(): void {
     this.getActos();
     this.tituloDialog = 'Expediente';
+    this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {
+      this.funcioActivo = data;
+      if (this.funcioActivo === null || this.funcioActivo === undefined) {
+        this.funcionarioActivo = false;
+      } else {
+        this.funcionarioActivo = true;
+      }
+    });
   }
   getActos(): void {
     this.actosService.getActos()
@@ -32,7 +47,6 @@ export class ActosComponent implements OnInit {
         this.actos = actos;
         this.actosO = this.actos;
       });
-
   }
   filtrar(){
     console.log('Ingresar ' + this.txtFiltro);
@@ -55,6 +69,13 @@ export class ActosComponent implements OnInit {
     this.displayBasic = true;
     this.tituloDialog = 'Expediente :' + this.actoSeleccionado.numExpediente;
 
+  }
+  editar(acto: Acto ): void {
+    this.selected = true;
+    this.crearacto = false;
+    this.actoSeleccionado = acto;
+    this.displayBasicEd = true;
+    this.tituloDialog = 'Expediente :' + this.actoSeleccionado.numExpediente;
   }
 
   showBasicDialog() {

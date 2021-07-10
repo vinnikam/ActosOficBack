@@ -13,12 +13,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
+import { EditarActoComponent } from './editar-acto/editar-acto.component';
 
 
 
 
 @NgModule({
-  declarations: [ActosComponent, DetalleComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent],
+  declarations: [ActosComponent, DetalleComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent, EditarActoComponent],
   imports: [
     ActosRoutingModule,
     CommonModule,
@@ -31,6 +32,6 @@ import {MenubarModule} from 'primeng/menubar';
     MenubarModule
 
   ],
-  exports: [ActosComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent]
+  exports: [ActosComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent, EditarActoComponent]
 })
 export class ActosModule { }

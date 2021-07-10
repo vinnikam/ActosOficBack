@@ -78,8 +78,9 @@ export class CrearActosComponent implements OnInit {
     // objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date,
     // causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number
     console.log(fila)
-    const elActo = new Acto(0, fila[0], fila[1], fila[2], fila[16], fila[5], fila[4], fila[3], this.converNumero(fila[6]), fila[7], fila[8],
-      this.convertDate(fila[9]), this.converNumero(fila[10]), fila[11], this.convertDate(fila[12]), fila[13], fila[14] , this.convertDate(fila[15]), this.converNumero(fila[17])  );
+    const elActo = new Acto(0, fila[0], fila[1], fila[2], fila[16], fila[5], fila[4], fila[3], fila[6], fila[7], fila[8],
+      this.convertDate(fila[9]), this.converNumero(fila[10]), fila[11], this.convertDate(fila[12]), fila[13], fila[14] , this.convertDate(fila[15]), this.converNumero(fila[17]) , fila[18], fila[19]
+    );
     console.log(elActo)
     return elActo;
   }

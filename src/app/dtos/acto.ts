@@ -15,7 +15,7 @@ export class Acto {
   numeroIdentificacion: string;
   tipoIdentificacion: string;
   nombreContribuyente: string;
-  impuesto: number;
+  impuesto: string;
   objeto: string;
   tipoActo: string;
   fechaActo: Date;
@@ -26,9 +26,12 @@ export class Acto {
   medioPublicacion: string;
   fechaPublicacion: Date;
   periodo: number;
+  urlPdf: string;
+  referenciaPdf: string;
 
 
-  constructor(id: number, numResolucion: string, numRadicado: string, numExpediente: string, descripcion: string, numeroIdentificacion: string, tipoIdentificacion: string, nombreContribuyente: string, impuesto: number, objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date, causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number) {
+  constructor(id: number, numResolucion: string, numRadicado: string, numExpediente: string, descripcion: string, numeroIdentificacion: string,
+              tipoIdentificacion: string, nombreContribuyente: string, impuesto: string, objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date, causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number, urlPdf: string, referenciaPdf: string ) {
     this.id = id;
     this.numResolucion = numResolucion;
     this.numRadicado = numRadicado;
@@ -48,5 +51,7 @@ export class Acto {
     this.medioPublicacion = medioPublicacion;
     this.fechaPublicacion = fechaPublicacion;
     this.periodo = periodo;
+    this.urlPdf = urlPdf;
+    this.referenciaPdf = referenciaPdf;
   }
 }

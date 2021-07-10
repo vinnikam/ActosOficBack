@@ -15,6 +15,7 @@ export class ActosService {
 
   urlActos = environment.urlActos;
   urlActosNew = environment.urlActosNew;
+  urlActosEditar = environment.urlActosEditar;
   urlLoginFuncionario = environment.urlAutenticar;
 
   funcionarioActivo = new BehaviorSubject<Funcionario>(null);
@@ -26,10 +27,18 @@ export class ActosService {
   getActos(): Observable<Acto[]> {
     return this.http.get<Acto[]>(this.urlActos);
   }
-  crearBanda(nuevoActoOf: Acto): Observable<Acto> {
+  crearActo(nuevoActoOf: Acto): Observable<Acto> {
     return this.http.post<Acto>(this.urlActosNew, nuevoActoOf).pipe(
       catchError(err => {
         console.log(`En el servicio crear Acto oficial: $(err.error)`);
+        return throwError(err);
+
+      }));
+  }
+  editarActo(actoOf: Acto): Observable<Acto> {
+    return this.http.post<Acto>(this.urlActosEditar, actoOf).pipe(
+      catchError(err => {
+        console.log(`En el servicio editar Acto oficial: $(err.error)`);
         return throwError(err);
 
       }));
