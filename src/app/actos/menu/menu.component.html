@@ -2,14 +2,19 @@
   <!--<img id="logo" src="https://user-images.githubusercontent.com/54365595/124684368-9322f580-de94-11eb-9638-2d378d27d129.png" /> -->
   <p-menubar [model]="items">
 
-    <div>
-      <a *ngIf="!funcionarioActivo" class="btn btn-outline-success my-2 my-sm-0"  href="/actos/autenticar">
-        Ingreso Funcionario
-      </a>
-      <a *ngIf="funcionarioActivo" class="btn btn-outline-success my-2 my-sm-0"   (click)="salir()" >
-        Salir Funcionario
+    <div *ngIf="funcionarioActivo">
+      Funcionario activo: {{funcioActivo.usuario}}
+      <a class="btn btn-outline-success my-2 my-sm-0"   (click)="salir()" >
+      Salir Funcionario
       </a>
     </div>
+    <div *ngIf="!funcionarioActivo">
+      CONTRIBUYENTE ACTIVO
+    <a class="btn btn-outline-success my-2 my-sm-0"  href="/actos/autenticar">
+      Ingreso Funcionario
+    </a>
+
+  </div>
   </p-menubar>
 
 

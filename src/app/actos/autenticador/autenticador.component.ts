@@ -47,7 +47,5 @@ export class AutenticadorComponent implements OnInit {
   warningSuccess(mensaje: string): void {
     this.toastrService.warning(mensaje);
   }
-  ngOnDestroy(): void {
-    this.funcionarioSubscription.unsubscribe();
-  }
+
 }

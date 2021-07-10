@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActosService} from '../actos.service';
 import {ToastrService} from 'ngx-toastr';
 import {Acto} from '../../dtos/acto';
+import {Subscription} from 'rxjs';
+import {Funcionario} from '../../dtos/funcionario';
 
 @Component({
   selector: 'app-crear-acto',
@@ -10,17 +12,29 @@ import {Acto} from '../../dtos/acto';
   styleUrls: ['./crear-acto.component.css']
 })
 export class CrearActoComponent implements OnInit {
+  funcionarioActivo =  false;
+  funcionarioSubscription: Subscription;
+  funcioActivo   : Funcionario;
 
   actoOfForm : FormGroup;
   constructor(private fbuilder: FormBuilder, private actosService: ActosService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
+    this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {
+      this.funcioActivo = data;
+      if (this.funcioActivo === null || this.funcioActivo === undefined) {
+        this.funcionarioActivo = false;
+      } else {
+        this.funcionarioActivo = true;
+      }
+    });
+
     this.actoOfForm = this.fbuilder.group({
       numResolucion: ["", Validators.required],
       numRadicado: ["", Validators.required],
       numExpediente: ["", Validators.required],
       descripcion: ["", Validators.required],
-      tipoIdentificacion: ["", Validators.required],
+      tipoIdentificacion: ["-1", Validators.required],
       numeroIdentificacion: ["", Validators.required],
       nombreContribuyente: ["", Validators.required],
       impuesto: [-1, Validators.required],
@@ -33,7 +47,7 @@ export class CrearActoComponent implements OnInit {
       causalDevolucion: [""],
       medioPublicacion: [-1, Validators.required],
       fechaPublicacion:  ["", Validators.required],
-      periodo: [-1, Validators.required],
+      periodo: [7, Validators.required],
       urlPdf: [""],
       referenciaPdf: [""],
     });
@@ -42,6 +56,8 @@ export class CrearActoComponent implements OnInit {
 
 
   crearActoOf(nuevoActoOf: Acto): void {
+    nuevoActoOf.funcionarioCrea = this.funcioActivo.usuario;
+
     console.warn("Acto Oficial creado", nuevoActoOf);
     this.showSuccess(nuevoActoOf);
     this.actosService.crearActo(nuevoActoOf).subscribe(client => {

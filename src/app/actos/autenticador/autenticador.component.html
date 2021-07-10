@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="container-fluid">
 
     <div class="col-4 p-3">
@@ -19,7 +20,7 @@
            *ngIf="autentForm.get('clave').hasError('required') && autentForm.get('clave').touched" >
         clave es requerida </div>
       <button type="submit" class="btn btn-primary" [disabled]="!autentForm.valid" >Ingresar</button>
-      <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >volver</button>
+      <!--button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >volver</button-->
 
     </form>
   </div>

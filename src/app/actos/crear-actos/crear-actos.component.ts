@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import {Acto} from '../../dtos/acto';
+import {Subscription} from 'rxjs';
+import {Funcionario} from '../../dtos/funcionario';
+import {ActosService} from '../actos.service';
 
 @Component({
   selector: 'app-crear-actos',
@@ -8,15 +11,27 @@ import {Acto} from '../../dtos/acto';
   styleUrls: ['./crear-actos.component.css']
 })
 export class CrearActosComponent implements OnInit {
+  funcionarioActivo =  false;
+  funcionarioSubscription: Subscription;
+  funcioActivo   : Funcionario;
+
   arrayBuffer:any;
   file:File;
   data: [][];
   registros:number = 0;
   procesar = false;
 
-  constructor() { }
+  constructor(private actosService: ActosService) { }
 
   ngOnInit(): void {
+    this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {
+      this.funcioActivo = data;
+      if (this.funcioActivo === null || this.funcioActivo === undefined) {
+        this.funcionarioActivo = false;
+      } else {
+        this.funcionarioActivo = true;
+      }
+    });
   }
   incomingfile(event)
   {
@@ -77,11 +92,11 @@ export class CrearActosComponent implements OnInit {
     // tipoIdentificacion: string, nombreContribuyente: string, impuesto: number,
     // objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date,
     // causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number
-    console.log(fila)
+    //console.log(fila)
     const elActo = new Acto(0, fila[0], fila[1], fila[2], fila[16], fila[5], fila[4], fila[3], fila[6], fila[7], fila[8],
-      this.convertDate(fila[9]), this.converNumero(fila[10]), fila[11], this.convertDate(fila[12]), fila[13], fila[14] , this.convertDate(fila[15]), this.converNumero(fila[17]) , fila[18], fila[19]
-    );
-    console.log(elActo)
+      this.convertDate(fila[9]), this.converNumero(fila[10]), fila[11], this.convertDate(fila[12]), fila[13], fila[14] ,
+      this.convertDate(fila[15]), this.converNumero(fila[17]) , fila[18], fila[19], this.funcioActivo.usuario, new Date(), null, null);
+    //console.log(elActo)
     return elActo;
   }
   converNumero(campo): number {
