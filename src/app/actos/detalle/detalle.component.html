@@ -1,113 +1,131 @@
 <div class="container-fluid">
   <p class="h3 p-3"></p>
-  <div class="row">
+  <div *ngIf="acto !== undefined" class="row">
 
       <div class="col-sm-6">
-        <hr>
         <dt>Número Resolución</dt>
         <dd >{{acto.numResolucion}}</dd>
         <hr>
       </div>
     <div class="col-sm-6">
-      <hr>
-      <dt>Número de Radicado</dt>
-      <dd >{{acto.numRadicado}}</dd>
+      <dt>Número de Cordis</dt>
+      <dd >{{acto.numCordis}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Número de Expediente</dt>
       <dd >{{acto.numExpediente}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
-      <dt>Descripción</dt>
-      <dd >{{acto.descripcion}}</dd>
-      <hr>
-    </div>
-    <div class="col-sm-6">
-      <hr>
       <dt>Fecha acto</dt>
       <dd >{{acto.fechaActo | date: "dd/MM/yyyy"}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt> Tipo Acto</dt>
       <dd >{{acto.tipoActo}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
-      <dt>Vigencia</dt>
-      <dd >{{acto.vigencia}}</dd>
+      <dt>Vigencia(s)</dt>
+      <dd >{{acto.vigencias}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Tipo Identificación</dt>
       <dd >{{acto.tipoIdentificacion}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Número Identificación</dt>
       <dd >{{acto.numeroIdentificacion}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt> Nombre Contribuyente y/o apoderado</dt>
       <dd >{{acto.nombreContribuyente}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Dirección Notificación</dt>
       <dd >{{acto.direccionNotificacion}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Impuesto</dt>
       <dd >{{acto.impuesto}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Chip / Placa</dt>
       <dd >{{acto.objeto}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Fecha devolución</dt>
       <dd >{{acto.fechaDevolucion | date: "dd/MM/yyyy"}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
       <dt>Causal Devolución</dt>
       <dd >{{acto.causalDevolucion}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
-      <hr>
-      <dt>Medio Publicacion</dt>
-      <dd >{{acto.medioPublicacion}}</dd>
+      <dt>Recurso precedente</dt>
+      <dd >{{acto.recursoPrecede}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
+      <dt>Tiempo para interponer recurso</dt>
+      <dd >{{acto.tiempoInterponRec}}</dd>
       <hr>
+    </div>
+    <div class="col-sm-6">
+      <dt>Oficina</dt>
+      <dd >{{acto.oficina}}</dd>
+      <hr>
+    </div>
+    <div class="col-sm-6">
+      <dt>Funcionario</dt>
+      <dd >{{acto.funcionario}}</dd>
+      <hr>
+    </div>
+
+    <div class="col-sm-6">
+      <dt>Fecha Solicitud</dt>
+      <dd >{{acto.fechaSolicitud | date: "dd/MM/yyyy"}}</dd>
+      <hr>
+    </div>
+    <div class="col-sm-6">
+      <dt>Tipo Publicación</dt>
+      <dd >{{acto.tipoPublicacion}}</dd>
+      <hr>
+    </div>
+    <div class="col-sm-6">
       <dt>Fecha Publicación</dt>
       <dd >{{acto.fechaPublicacion | date: "dd/MM/yyyy"}}</dd>
       <hr>
     </div>
     <div class="col-sm-6">
+      <dt>Número de registro distrital</dt>
+      <dd >{{acto.registroDistrital}}</dd>
       <hr>
-      <dt>Período</dt>
-      <dd >{{acto.periodo}}</dd>
+    </div>
+    <div class="col-sm-6">
+      <dt>Url Pdf</dt>
+      <dd >{{acto.urlPdf}}</dd>
+      <hr>
+    </div>
+    <div class="col-sm-6">
+      <dt>Número de página dentro del Pdf</dt>
+      <dd >{{acto.noPagina}}</dd>
+      <hr>
+    </div>
+    <div class="col-sm-6">
+      <dt>Descripción</dt>
+      <dd >{{acto.descripcion}}</dd>
       <hr>
     </div>
 

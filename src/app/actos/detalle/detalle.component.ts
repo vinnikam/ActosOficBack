@@ -13,6 +13,14 @@ export class DetalleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(this.acto === undefined){
+      this.acto = new Acto(0,
+        null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null,null,
+        null, null, null, null, null, null, null, null, null);
+    }
+
   }
 
 }

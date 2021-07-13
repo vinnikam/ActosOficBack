@@ -5,6 +5,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Acto} from '../../dtos/acto';
 import {Subscription} from 'rxjs';
 import {Funcionario} from '../../dtos/funcionario';
+import {tipoidentificacion, tipoimpuesto, causaldevolucion, tiporecurso, tipoacto, tipopublicacion, tiporecursopreced} from '../../config/datosbase';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-crear-acto',
@@ -16,40 +18,68 @@ export class CrearActoComponent implements OnInit {
   funcionarioSubscription: Subscription;
   funcioActivo   : Funcionario;
 
+  // datos base
+  tipoidentificacion : any;
+  tipoimpuesto : any;
+  causaldevolucion : any;
+  tiporecurso : any;
+  tipoacto : any;
+  tipopublicacion :any;
+  tiporecursopreced: any;
+
   actoOfForm : FormGroup;
-  constructor(private fbuilder: FormBuilder, private actosService: ActosService, private toastrService: ToastrService) { }
+  constructor(private fbuilder: FormBuilder, private actosService: ActosService, private toastrService: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
+    this.tipoidentificacion = tipoidentificacion;
+    this.tipoimpuesto = tipoimpuesto;
+    this.causaldevolucion = causaldevolucion;
+    this.tiporecurso = tiporecurso;
+    this.tipoacto = tipoacto;
+    this.tipopublicacion = tipopublicacion;
+    this.tiporecursopreced = tiporecursopreced;
+
     this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {
       this.funcioActivo = data;
+
       if (this.funcioActivo === null || this.funcioActivo === undefined) {
         this.funcionarioActivo = false;
       } else {
         this.funcionarioActivo = true;
       }
     });
-
+    if (this.funcioActivo === null)
+    {
+      this.warning("Sin permisos para acceder, será redirigido a la página principal.");
+      this.router.navigate(['/']);
+    }
     this.actoOfForm = this.fbuilder.group({
-      numResolucion: ["", Validators.required],
-      numRadicado: ["", Validators.required],
+      llave : [""],
+      numResolucion: [""],
+      numCordis: ["", Validators.required],
       numExpediente: ["", Validators.required],
-      descripcion: ["", Validators.required],
+      nombreContribuyente: ["", Validators.required],
       tipoIdentificacion: ["-1", Validators.required],
       numeroIdentificacion: ["", Validators.required],
-      nombreContribuyente: ["", Validators.required],
       impuesto: [-1, Validators.required],
-      objeto: ["", Validators.required],
+      objeto: [""],
       tipoActo: [-1, Validators.required],
       fechaActo: ["", Validators.required],
-      vigencia: ["", [Validators.required, Validators.maxLength(4), Validators.pattern("^[0-9]*$")]],
+      vigencias: ["", [Validators.required, Validators.pattern("^[0-9]*$")]],
       direccionNotificacion: ["", Validators.required],
       fechaDevolucion: [""],
-      causalDevolucion: [""],
-      medioPublicacion: [-1, Validators.required],
+      causalDevolucion: ["-1"],
+      recursoPrecede: ["-1"],
+      tiempoInterponRec: [""],
+      oficina: [""],
+      funcionario: [""],
+      fechaSolicitud: [""],
       fechaPublicacion:  ["", Validators.required],
-      periodo: [7, Validators.required],
-      urlPdf: [""],
-      referenciaPdf: [""],
+      tipoPublicacion: ["-1"],
+      registroDistrital: ["",[Validators.pattern("^[0-9]*$")]],
+      noPagina: [""],
+      descripcion: [""],
+      urlPdf: [""]
     });
   }
 
@@ -65,7 +95,7 @@ export class CrearActoComponent implements OnInit {
       this.showSuccess(nuevoActoOf);
     });
 
-    this.actoOfForm.reset();
+    // this.cancelar("Se canceló la creación de un nuevo acto ")
   }
   showSuccess(nuevoActoOf: Acto): void {
     this.toastrService.success("Se creó un nuevo acto "+nuevoActoOf.descripcion);
@@ -76,8 +106,14 @@ export class CrearActoComponent implements OnInit {
       });
   */
   }
+  warning(mensaje: string): void {
+
+    this.toastrService.warning(mensaje);
+
+  }
   cancelar(): void {
-    console.log("Cancela creación Acto ");
+
+    this.toastrService.warning("Se canceló la creación del acto. ");
     this.actoOfForm.reset();
   }
 

@@ -17,5 +17,9 @@
     <p>Total de registros para procesar : {{registros}}</p>
     <button type="button" class="btn btn-info" (click)="Upload()" >Procesar </button>
   </div>
+  <div *ngIf="registrados">
+    <p>Total de registros procesados  : {{procesados}} /  {{registros}} </p>
+
+  </div>
 
 </div>

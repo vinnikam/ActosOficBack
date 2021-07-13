@@ -4,7 +4,7 @@
     <h5>Listado de Actos</h5>
     <p-table #dt1 [value]="actos" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
              currentPageReportTemplate="Listando {first} a {last} de {totalRecords} registros" styleClass="p-datatable-striped"
-             [globalFilterFields]="['numResolucion','numRadicado','numExpediente','numeroIdentificacion', 'nombreContribuyente', 'tipoIdentificacion']">
+             [globalFilterFields]="['numResolucion','numCordis','numExpediente','numeroIdentificacion', 'nombreContribuyente', 'tipoIdentificacion', 'direccionNotificacion']">
 
       <ng-template pTemplate="caption">
         <div class="p-d-flex">
@@ -19,12 +19,16 @@
       <ng-template pTemplate="header">
         <tr>
           <th>Fecha Acto</th>
+
+          <th>Número de Córdis</th>
           <th>Número de resolución</th>
-          <th>Número de radicado</th>
           <th>Número de expediente</th>
 
           <th>Identificación</th>
           <th>Contribuyente / Apoderado</th>
+          <th>Dirección notificación</th>
+          <th>Fecha devolución</th>
+          <th>Causal devolución</th>
           <th>Pdf Asociado</th>
           <th>Acciones</th>
         </tr>
@@ -32,12 +36,19 @@
       <ng-template pTemplate="body" let-dato>
         <tr>
           <td>{{dato.fechaActo | date: "dd/MM/yyyy"}}</td>
+          <td >{{dato.numCordis}}</td>
           <td >{{dato.numResolucion}}</td>
-          <td >{{dato.numRadicado}}</td>
           <td >{{dato.numExpediente}}</td>
+
           <td >{{dato.tipoIdentificacion}}-{{dato.numeroIdentificacion}}</td>
           <td >{{dato.nombreContribuyente}}</td>
-          <td ><a href="{{dato.urlPdf}}" target="_blank">Descargue el archivo y {{dato.referenciaPdf}}</a> </td>
+          <td >{{dato.direccionNotificacion}}</td>
+          <td>{{dato.fechaDevolucion | date: "dd/MM/yyyy"}}</td>
+          <td >{{dato.causalDevolucion}}</td>
+
+          <td *ngIf="dato.urlPdf!== null"><a href="{{dato.urlPdf}}" target="_blank">Descargue el archivo y {{dato.referenciaPdf}}</a> </td>
+          <td *ngIf="dato.urlPdf=== null">NO REGISTRA </td>
+
           <td ><button type="button" class="btn btn-success" id="btdetalle1"   data-toggle="modal" data-target="#exampleModal" (click)="onSelect(dato)">Detalle</button>
             <button *ngIf="funcionarioActivo" type="button" class="btn btn-success" id="bteditar"   data-toggle="modal" data-target="#exampleModalEd" (click)="editar(dato)">Editar</button>
           </td>

@@ -3,61 +3,74 @@ enum Impuesto{
   ica,
   vehiculos
 
-
 }
 
 export class Acto {
   id: number;
+  llave: string;
+  item: string;
+  originalCopia: string;
   numResolucion: string;
-  numRadicado: string;
+  numCordis: string;
   numExpediente: string;
-  descripcion: string;
-  numeroIdentificacion: string;
-  tipoIdentificacion: string;
   nombreContribuyente: string;
+  tipoIdentificacion: string;
+  numeroIdentificacion: string;
   impuesto: string;
   objeto: string;
   tipoActo: string;
   fechaActo: Date;
-  vigencia: number;
+  vigencias: string;
   direccionNotificacion: string;
   fechaDevolucion: Date;
   causalDevolucion: string;
-  medioPublicacion: string;
+  recursoPrecede: string;
+  tiempoInterponRec: string;
+  oficina: string;
+  funcionario: string;
+  fechaSolicitud: Date;
   fechaPublicacion: Date;
-  periodo: number;
+  tipoPublicacion: string;
+  registroDistrital: number;
+  noPagina: string;
+  descripcion: string;
   urlPdf: string;
-  referenciaPdf: string;
-  funcionarioCrea;
-  fechaCreacion;
-  funcionarioEdita;
-  fechaEdicion;
+  funcionarioCrea: string;
+  fechaCreacion: Date;
+  funcionarioEdita: string;
+  fechaEdicion: Date;
 
 
-  constructor(id: number, numResolucion: string, numRadicado: string, numExpediente: string, descripcion: string, numeroIdentificacion: string,
-              tipoIdentificacion: string, nombreContribuyente: string, impuesto: string, objeto: string, tipoActo: string, fechaActo: Date, vigencia: number, direccionNotificacion: string, fechaDevolucion: Date, causalDevolucion: string, medioPublicacion: string, fechaPublicacion: Date, periodo: number, urlPdf: string, referenciaPdf: string,
-              funcionarioCrea: string, fechaCreacion : Date, funcionarioEdita: string, fechaEdicion: Date) {
+  constructor(id: number, llave: string, item: string, originalCopia: string, numResolucion: string, numCordis: string, numExpediente: string, nombreContribuyente: string, tipoIdentificacion: string, numeroIdentificacion: string, impuesto: string, objeto: string, tipoActo: string, fechaActo: Date, vigencias: string, direccionNotificacion: string, fechaDevolucion: Date, causalDevolucion: string, recursoPrecede: string, tiempoInterponRec: string, oficina: string, funcionario: string, fechaSolicitud: Date, fechaPublicacion: Date, tipoPublicacion: string, registroDistrital: number, noPagina: string, descripcion: string, urlPdf: string, funcionarioCrea: string, fechaCreacion: Date, funcionarioEdita: string, fechaEdicion: Date) {
     this.id = id;
+    this.llave = llave;
+    this.item = item;
+    this.originalCopia = originalCopia;
     this.numResolucion = numResolucion;
-    this.numRadicado = numRadicado;
+    this.numCordis = numCordis;
     this.numExpediente = numExpediente;
-    this.descripcion = descripcion;
-    this.numeroIdentificacion = numeroIdentificacion;
-    this.tipoIdentificacion = tipoIdentificacion;
     this.nombreContribuyente = nombreContribuyente;
+    this.tipoIdentificacion = tipoIdentificacion;
+    this.numeroIdentificacion = numeroIdentificacion;
     this.impuesto = impuesto;
     this.objeto = objeto;
     this.tipoActo = tipoActo;
     this.fechaActo = fechaActo;
-    this.vigencia = vigencia;
+    this.vigencias = vigencias;
     this.direccionNotificacion = direccionNotificacion;
     this.fechaDevolucion = fechaDevolucion;
     this.causalDevolucion = causalDevolucion;
-    this.medioPublicacion = medioPublicacion;
+    this.recursoPrecede = recursoPrecede;
+    this.tiempoInterponRec = tiempoInterponRec;
+    this.oficina = oficina;
+    this.funcionario = funcionario;
+    this.fechaSolicitud = fechaSolicitud;
     this.fechaPublicacion = fechaPublicacion;
-    this.periodo = periodo;
+    this.tipoPublicacion = tipoPublicacion;
+    this.registroDistrital = registroDistrital;
+    this.noPagina = noPagina;
+    this.descripcion = descripcion;
     this.urlPdf = urlPdf;
-    this.referenciaPdf = referenciaPdf;
     this.funcionarioCrea = funcionarioCrea;
     this.fechaCreacion = fechaCreacion;
     this.funcionarioEdita = funcionarioEdita;

@@ -4,6 +4,9 @@ import {ActosService} from '../actos.service';
 import {ToastrService} from 'ngx-toastr';
 import {Subscription} from 'rxjs';
 import {Funcionario} from '../../dtos/funcionario';
+import {tipoidentificacion, tipoimpuesto, causaldevolucion, tiporecurso, tipoacto, tipopublicacion, tiporecursopreced} from '../../config/datosbase';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-editar-acto',
@@ -15,11 +18,28 @@ export class EditarActoComponent implements OnInit {
   funcionarioSubscription: Subscription;
   funcioActivo   : Funcionario;
 
+  // datos base
+  tipoidentificacion : any;
+  tipoimpuesto : any;
+  causaldevolucion : any;
+  tiporecurso : any;
+  tipoacto : any;
+  tipopublicacion :any;
+  tiporecursopreced: any;
+
   @Input() actoed : Acto;
 
-  constructor(private actosService: ActosService, private toastrService: ToastrService) { }
+  constructor(private actosService: ActosService, private toastrService: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
+    this.tipoidentificacion = tipoidentificacion;
+    this.tipoimpuesto = tipoimpuesto;
+    this.causaldevolucion = causaldevolucion;
+    this.tiporecurso = tiporecurso;
+    this.tipoacto = tipoacto;
+    this.tipopublicacion = tipopublicacion;
+    this.tiporecursopreced = tiporecursopreced;
+
     this.funcionarioSubscription = this.actosService.funcionarioActivo.subscribe((data: Funcionario) => {
       this.funcioActivo = data;
       if (this.funcioActivo === null || this.funcioActivo === undefined) {
@@ -28,7 +48,11 @@ export class EditarActoComponent implements OnInit {
         this.funcionarioActivo = true;
       }
     });
-
+    if (this.funcioActivo === null)
+    {
+      this.warning("Sin permisos para acceder, será redirigido a la página principal.");
+      this.router.navigate(['/']);
+    }
   }
   actualizar(): void {
     console.warn("Acto Oficial editado", this.actoed);
@@ -49,6 +73,11 @@ export class EditarActoComponent implements OnInit {
   */
   }
   cancelar(): void {
+
+  }
+  warning(mensaje: string): void {
+
+    this.toastrService.warning(mensaje);
 
   }
 }

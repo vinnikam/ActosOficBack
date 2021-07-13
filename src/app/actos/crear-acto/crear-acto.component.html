@@ -16,13 +16,13 @@
             <hr>
           </div>
           <div class="col-sm-6">
-            <label for ="numRadicado" >
-              Número de Radicado
+            <label for ="numCordis" >
+              Número de Cordis
             </label>
-            <input novalidate id = "numRadicado" class="form-control" formControlName="numRadicado" placeholder="Número de Radicado" >
+            <input novalidate id = "numCordis" class="form-control" formControlName="numCordis" placeholder="Número de cordis" >
             <div class="alert alert-danger alert-dismissible fade show"
-                 *ngIf="actoOfForm.get('numRadicado').hasError('required') && actoOfForm.get('numRadicado').touched" >
-              Número de Radicado es requerido </div>
+                 *ngIf="actoOfForm.get('numCordis').hasError('required') && actoOfForm.get('numCordis').touched" >
+              Número de Cordis es requerido </div>
             <hr>
           </div>
           <div class="col-sm-6">
@@ -35,16 +35,7 @@
               Número de Expediente es requerido </div>
             <hr>
           </div>
-          <div class="col-sm-6">
-            <label for ="descripcion" >
-              Descripción
-            </label>
-            <textarea novalidate id = "descripcion" class="form-control" formControlName="descripcion" placeholder="Descripción de acto oficial" ></textarea>
-            <div class="alert alert-danger alert-dismissible fade show"
-                 *ngIf="actoOfForm.get('descripcion').hasError('required') && actoOfForm.get('descripcion').touched" >
-              Descripción requerida</div>
-            <hr>
-          </div>
+
           <div class="col-sm-6">
             <label for ="fechaActo" >
               Fecha acto
@@ -61,10 +52,9 @@
             </label>
             <select id="tipoActo" class="form-select" formControlName="tipoActo" >
               <option value="-1" selected>Seleccione un tipo de acto</option>
-              <option value="Resolución de devolución y/o compensación">Resolución de devolución y/o compensación</option>
-              <option value="Resolución reducción sanción">Resolución reducción sanción</option>
-              <option value="Resolución sanción por no enviar información">Resolución sanción por no enviar información</option>
-              <option value="Otra">Otra</option>
+              <option *ngFor="let dato of tipoacto" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
             </select>
             <div class="alert alert-danger alert-dismissible fade show"
                  *ngIf="actoOfForm.get('tipoActo').hasError('required') && actoOfForm.get('tipoActo').touched" >
@@ -72,37 +62,28 @@
             <hr>
           </div>
           <div class="col-sm-6">
-            <label for ="vigencia" >
-              Vigencia
+            <label for ="vigencias" >
+              Vigencia(s)
             </label>
-            <input novalidate id = "vigencia" class="form-control" formControlName="vigencia" placeholder="vigencia" >
+            <input novalidate id = "vigencias" class="form-control" formControlName="vigencias" placeholder="vigencias" >
             <div class="alert alert-danger alert-dismissible fade show"
-                 *ngIf="actoOfForm.get('vigencia').hasError('required') && actoOfForm.get('vigencia').touched" >
-              Vigencia requerida</div>
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              *ngIf="actoOfForm.get('vigencia').hasError('maxlength') &&
-                      actoOfForm.get('vigencia').touched">
-              La vigencia debe tener máximo 4 caractéres
-            </div>
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              *ngIf="actoOfForm.get('vigencia').hasError('pattern') &&
-                      actoOfForm.get('vigencia').touched">
-              Debe contener solo números
-            </div>
+                 *ngIf="actoOfForm.get('vigencias').hasError('required') && actoOfForm.get('vigencias').touched" >
+              Vigencia(s) requerida(s)</div>
+
             <hr>
           </div>
-          <div class="col-sm-6">
-          </div>
+
           <div class="col-sm-6">
             <label for ="tipoIdentificacion" >
               Tipo Identificación
             </label>
             <select id="tipoIdentificacion" class="form-select" formControlName="tipoIdentificacion" >
               <option value="-1" selected>Seleccione un tipo de identificación</option>
-              <option value="C.C.">Cédula de Ciudadanía</option>
-              <option value="N.I.T.">Número de identificación tributaria</option>
+              <option *ngFor="let dato of tipoidentificacion" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
+
+
             </select>
             <div class="alert alert-danger alert-dismissible fade show"
                  *ngIf="actoOfForm.get('tipoIdentificacion').hasError('required') && actoOfForm.get('tipoIdentificacion').touched" >
@@ -145,10 +126,9 @@
             </label>
             <select id="impuesto" class="form-select" formControlName="impuesto">
               <option value="-1" selected>Seleccione un impuesto</option>
-              <option value="PREDIAL">PREDIAL</option>
-              <option value="VEHICULOS">VEHICULOS</option>
-              <option value="ICA">ICA</option>
-              <option value="NINGUNO">NINGUNO</option>
+              <option *ngFor="let dato of tipoimpuesto" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
             </select>
             <div class="alert alert-danger alert-dismissible fade show"
                  *ngIf="actoOfForm.get('impuesto').hasError('required') && actoOfForm.get('impuesto').touched" >
@@ -177,17 +157,70 @@
             <label for ="causalDevolucion" >
               Causal Devolución
             </label>
-            <input novalidate id = "causalDevolucion" class="form-control" formControlName="causalDevolucion" placeholder="Causal Devolución" >
+            <select id="causalDevolucion" class="form-select" formControlName="causalDevolucion">
+              <option value="-1" selected>Seleccione un causal de devolución</option>
+              <option *ngFor="let dato of causaldevolucion" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
+            </select>
+
             <hr>
           </div>
           <div class="col-sm-6">
-            <label for="medioPublicacion" >
-              Medio Publicacion
+            <label for ="recursoPrecede" >
+              Recurso Precedente
             </label>
-            <select id="medioPublicacion" class="form-select" formControlName="medioPublicacion" >
-              <option value="-1" selected>Seleccione un medio de publicación</option>
-              <option value="Registro Distrital">Registro Distrital</option>
-              <option value="Diario de Amplia Circulación">Diario de Amplia Circulación</option>
+            <select id="recursoPrecede" class="form-select" formControlName="recursoPrecede" >
+              <option value="-1" selected>Seleccione un tipo de recurso que precede</option>
+              <option *ngFor="let dato of tiporecursopreced" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
+            </select>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('tipoActo').hasError('required') && actoOfForm.get('tipoActo').touched" >
+              Tipo Acto es requerido</div>
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="tiempoInterponRec" >
+              Tiempo para inteponer recurso
+            </label>
+            <input type="text" id = "tiempoInterponRec" class="form-control" formControlName="tiempoInterponRec" placeholder="Tiempo para interoponer un recurso" >
+
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="oficina" >
+              Oficina
+            </label>
+            <input type="text" id = "oficina" class="form-control" formControlName="oficina" placeholder="Nombre de la oficina" >
+
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="funcionario" >
+              Funcionario
+            </label>
+            <input type="text" id = "funcionario" class="form-control" formControlName="funcionario" placeholder="usuario del funcionario" >
+
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="fechaSolicitud" >
+              Fecha de solicitud
+            </label>
+            <input novalidate type="date" id = "fechaSolicitud" class="form-control" formControlName="fechaSolicitud" placeholder="Fecha de solicitud" >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for="tipoPublicacion" >
+              Tipo Publicación
+            </label>
+            <select id="tipoPublicacion" class="form-select" formControlName="tipoPublicacion" >
+              <option value="-1" selected>Seleccione un tipo de publicación</option>
+              <option *ngFor="let dato of tipopublicacion" [value]="dato.valor">
+                {{dato.nombre}}
+              </option>
             </select>
             <hr>
           </div>
@@ -202,32 +235,40 @@
             <hr>
           </div>
           <div class="col-sm-6">
-            <label  >
-              Período
+            <label for ="registroDistrital" >
+              Número del registro distrital.
             </label>
-            <select novalidate id="periodo" class="form-select" formControlName="periodo" >
-              <option value="1">Bimestre enero-febrero</option>
-              <option value="2">Bimestre marzo-abril</option>
-              <option value="3">Bimestre mayo-junio</option>
-              <option value="4">Bimestre julio-agosto</option>
-              <option value="5">Bimestre septiembre-octubre</option>
-              <option value="6">Bimestre noviembre-diciembre</option>
-              <option value="7" selected>Anual</option>
-            </select>
+            <input id = "registroDistrital" class="form-control" formControlName="registroDistrital" placeholder="Número del registro distrital. " >
+            <div
+              class="alert alert-danger alert-dismissible fade show"
+              *ngIf="actoOfForm.get('registroDistrital').hasError('pattern') &&
+                      actoOfForm.get('registroDistrital').touched">
+              Debe contener solo números
+            </div>
             <hr>
           </div>
           <div class="col-sm-6">
             <label for ="urlPdf" >
               Url del archivo Pdf asociado al Acto Oficial.
             </label>
-            <input id = "urlPdf" class="form-control" formControlName="urlPdf" placeholder="Selecciones la ruta donde esta el pdf asociado al Acto. " >
+            <input id = "urlPdf" class="form-control" formControlName="urlPdf" placeholder="Url del Pdf que contiene la información del acto oficial." >
             <hr>
           </div>
           <div class="col-sm-6">
-            <label for ="referenciaPdf" >
-              Referencia para encontrar el Acto en el PDF
+            <label for ="noPagina" >
+              Número de página dentro del PDF
             </label>
-            <input id = "referenciaPdf" class="form-control" formControlName="referenciaPdf" placeholder="Escriba la referencia para encontrar el Acto en el PDF" >
+            <input id = "noPagina" class="form-control" formControlName="noPagina" placeholder="Número de página dentro del documento PDF. " >
+            <hr>
+          </div>
+          <div class="col-sm-6">
+            <label for ="descripcion" >
+              Descripción del acto oficial.
+            </label>
+            <textarea novalidate id = "descripcion" class="form-control" formControlName="descripcion" placeholder="Descripción de acto oficial" ></textarea>
+            <div class="alert alert-danger alert-dismissible fade show"
+                 *ngIf="actoOfForm.get('descripcion').hasError('required') && actoOfForm.get('descripcion').touched" >
+              Descripción requerida</div>
             <hr>
           </div>
 
