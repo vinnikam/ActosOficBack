@@ -3,6 +3,7 @@ import {ActosService} from '../actos.service';
 import {Acto} from '../../dtos/acto';
 import {Subscription} from 'rxjs';
 import {Funcionario} from '../../dtos/funcionario';
+import {UtilidadesService} from '../utilidades.service';
 
 @Component({
   selector: 'app-actos',
@@ -27,7 +28,7 @@ export class ActosComponent implements OnInit {
   displayBasicEd : boolean;
   tituloDialog: string;
 
-  constructor(public actosService: ActosService) { }
+  constructor(public actosService: ActosService, public utilidades: UtilidadesService) { }
 
   ngOnInit(): void {
     this.getActos();
@@ -40,6 +41,7 @@ export class ActosComponent implements OnInit {
         this.funcionarioActivo = true;
       }
     });
+
   }
   getActos(): void {
     this.actosService.getActos()
@@ -80,5 +82,8 @@ export class ActosComponent implements OnInit {
 
   showBasicDialog() {
     this.displayBasic = true;
+  }
+  cambiaFecha(lafecha:Date): string {
+    return this.utilidades.convertirFecha(lafecha);
   }
 }

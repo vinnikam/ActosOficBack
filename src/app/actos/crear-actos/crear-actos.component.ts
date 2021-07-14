@@ -75,6 +75,7 @@ export class CrearActosComponent implements OnInit {
       if (client.id >0){
         this.procesados++;
         this.registrados = true;
+
       }
     });
 
@@ -89,19 +90,61 @@ export class CrearActosComponent implements OnInit {
 
     reader.onload = (e: any) => {
       const bstr: string = e.target.result;
-
       const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
-
       const wsname : string = wb.SheetNames[0];
-
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+      console.log(" wb "+wb+" wsname "+wsname+" ws "+ws);
+      let fechaacto : any;
+      let fechadevol : any;
+      let fechasolic : any;
+      let fechapublic : any;
 
-      //console.log(ws);
+
 
       this.data = (XLSX.utils.sheet_to_json(ws, { header: 1 }));
+      /*for (let i =0 ; i<this.data.length; i++ ){
+        for (let j =0 ; j<20; j++ )
+        console.log(" i "+i+" j "+j+" "+this.data[i][j]);
+      }*/
 
-      //console.log(this.data);
-
+      // @ts-ignore
+      console.log(this.data[1][12]);
+      for (let i =1 ; i<=this.data.length; i++ ){
+        if (ws["M"+(i+1)] !== undefined){
+          fechaacto = ws["M"+(i+1)].w;
+          if (fechaacto  === undefined){
+            fechaacto = null;
+          }
+          // @ts-ignore
+          this.data[i][12] = fechaacto;
+          // @ts-ignore
+          //console.log(this.data[1][12]);
+        }
+        if (ws["P"+(i+1)] !== undefined){
+          fechadevol = ws["P"+(i+1)].w;
+          if (fechadevol  === undefined){
+            fechadevol = null;
+          }
+          // @ts-ignore
+          this.data[i][15] = fechadevol;
+        }
+        if (ws["V"+(i+1)] !== undefined){
+          fechasolic = ws["V"+(i+1)].w;
+          if (fechasolic  === undefined){
+            fechasolic = null;
+          }
+          // @ts-ignore
+          this.data[i][21] = fechasolic;
+        }
+        if (ws["W"+(i+1)] !== undefined){
+          fechapublic = ws["W"+(i+1)].w;
+          if (fechapublic  === undefined){
+            fechapublic = null;
+          }
+          // @ts-ignore
+          this.data[i][22] = fechapublic;
+        }
+      }
       let x = this.data.slice(1);
       //console.log(x);
       this.registros = this.data.length -1;
@@ -130,8 +173,8 @@ export class CrearActosComponent implements OnInit {
     //console.log(fila)
     const elActo = new Acto(0,
       fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6], fila[7], fila[8], fila[9], fila[10],
-      fila[11], fila[12], fila[13], fila[14], fila[15], fila[16], fila[17], fila[18], fila[19], fila[20], fila[21],
-      fila[22], fila[23], fila[24], fila[25], fila[26], fila[27], this.funcioActivo.usuario, null, null, null);
+      fila[11], this.convertDate(fila[12]), fila[13], fila[14], this.convertDate(fila[15]), fila[16], fila[17], fila[18], fila[19], fila[20],
+      this.convertDate(fila[21]),this.convertDate(fila[22]), fila[23], fila[24], fila[25], fila[26], fila[27], this.funcioActivo.usuario, null, null, null);
     //  this.convertDate(fila[9]), this.converNumero(fila[10]), fila[11], this.convertDate(fila[12]), fila[13], fila[14] ,
      // this.convertDate(fila[15]), this.converNumero(fila[17]) , fila[18], fila[19], this.funcioActivo.usuario, new Date(), null, null);
     //console.log(elActo)

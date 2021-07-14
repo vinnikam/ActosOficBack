@@ -7,6 +7,7 @@ import {ActosModule} from './actos/actos.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {ToastrModule} from 'ngx-toastr';
       preventDuplicates: true,
     })
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
