@@ -11,7 +11,14 @@ export const environment = {
   urlAutenticar: `${hostAU}ServiciosRITDQ/resources/consultas/autenticar`,
   urlActos: `${host}actos/`,
   urlActosNew: `${host}actos/guardar`,
-  urlActosEditar: `${host}actos/editar`
+  urlActosEditar: `${host}actos/editar`,
+  urlFuncionarios: `${host}funcionarios/`,
+  urlFuncioNew: `${host}funcionarios/guardar`,
+  urlFuncioBorrar: `${host}funcionarios/borrar`,
+  urlFuncioModificar: `${host}funcionarios/modificar`,
+  urlFunciobyNombre: `${host}funcionarios/bynombre`
+
+
 
 
 };

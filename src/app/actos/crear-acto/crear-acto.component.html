@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 
 <div class="container py-5">
+  <div class="card">
   <div class="row">
     <div class="col-md-10 mx-auto">
       <form [formGroup]="actoOfForm" (ngSubmit)="!actoOfForm.invalid && crearActoOf(actoOfForm.value)">
@@ -280,6 +281,7 @@
         </div>
       </form>
     </div>
+  </div>
   </div>
 </div>
 

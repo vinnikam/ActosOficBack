@@ -29,6 +29,7 @@
           <th>Dirección notificación</th>
           <th>Fecha devolución</th>
           <th>Causal devolución</th>
+          <th>Fecha Notificación</th>
           <th>Pdf Asociado</th>
           <th>Acciones</th>
         </tr>
@@ -43,9 +44,9 @@
           <td >{{dato.tipoIdentificacion}}-{{dato.numeroIdentificacion}}</td>
           <td >{{dato.nombreContribuyente}}</td>
           <td >{{dato.direccionNotificacion}}</td>
-          <td>-</td>
+          <td>{{dato.fechaDevolucion | date: "dd/MM/yyyy"}}</td>
           <td >{{dato.causalDevolucion}}</td>
-
+          <td>{{dato.fechaPublicacion | date: "dd/MM/yyyy"}}</td>
           <td *ngIf="dato.urlPdf!== null"><a href="{{dato.urlPdf}}" target="_blank">Descargue el archivo y {{dato.referenciaPdf}}</a> </td>
           <td *ngIf="dato.urlPdf=== null">NO REGISTRA </td>
 

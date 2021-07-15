@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {DatePipe} from '@angular/common';
+import {FuncionariosModule} from './funcionarios/funcionarios.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {DatePipe} from '@angular/common';
     AppRoutingModule,
     BrowserModule,
     ActosModule,
+    FuncionariosModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

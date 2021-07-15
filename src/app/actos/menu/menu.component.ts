@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
         label: 'Actos',
         icon: 'pi pi-fw pi-file-o',
         items: [
-          {label: 'Listado de Actos publicados', icon: 'pi pi-fw pi-copy', routerLink: '/actos/lista'}
+          {label: 'Listado de Actos publicados', icon: 'pi pi-fw pi-copy', routerLink: 'actos/lista'}
         ]
       }
     ];
@@ -40,8 +40,8 @@ export class MenuComponent implements OnInit {
         label: 'Operaciones Funcionario',
         icon: 'pi pi-fw pi-file-o',
         items: [
-          {label: 'Crear actos individual', icon: 'pi pi-fw pi-copy', routerLink: '/actos/crear'},
-          {label: 'Crear actos desde Archivo', icon: 'pi pi-fw pi-user', routerLink: '/actos/crearm'}
+          {label: 'Crear actos individual', icon: 'pi pi-fw pi-copy', routerLink: 'actos/crear'},
+          {label: 'Crear actos desde Archivo', icon: 'pi pi-fw pi-user', routerLink: 'actos/crearm'}
         ]
       });
     }

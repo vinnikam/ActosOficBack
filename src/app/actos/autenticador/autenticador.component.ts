@@ -3,9 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActosService} from '../actos.service';
 import {ToastrService} from 'ngx-toastr';
 import {Funcionario} from '../../dtos/funcionario';
-import {Acto} from '../../dtos/acto';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {FuncionarioService} from '../../funcionarios/funcionario.service';
 
 @Component({
   selector: 'app-autenticador',
@@ -16,7 +16,8 @@ export class AutenticadorComponent implements OnInit {
 
   autentForm : FormGroup;
   funcionarioSubscription: Subscription;
-  constructor(private fbuilder: FormBuilder, private actosService: ActosService, private toastrService: ToastrService, private router: Router) { }
+  constructor(private fbuilder: FormBuilder, private actosService: ActosService, private toastrService: ToastrService, private router: Router,
+              private funcioService: FuncionarioService) { }
 
   ngOnInit(): void {
     this.autentForm = this.fbuilder.group({
@@ -28,9 +29,9 @@ export class AutenticadorComponent implements OnInit {
     this.actosService.loginFuncionario(funcionario).subscribe(rta => {
       if (rta != null ){
         if (rta.codigoError === "0"){
-          this.actosService.funcionarioActivo.next(funcionario);
-          this.showSuccess("Usuario autenticado con éxito.");
-          this.router.navigate(['/actos/lista']);
+
+          this.validarUsuario(funcionario);
+
         } else {
           this.warningSuccess("El usuario no se autenticó, revise los datos de acceso.")
           this.actosService.funcionarioActivo.next(null);
@@ -46,6 +47,18 @@ export class AutenticadorComponent implements OnInit {
   }
   warningSuccess(mensaje: string): void {
     this.toastrService.warning(mensaje);
+  }
+  validarUsuario(funcionario: Funcionario): void {
+    this.funcioService.consultaFuncionbyNombre(funcionario).subscribe(funcio =>{
+      if (funcio.estado == 1){
+        this.router.navigate(['/actos/lista']);
+        this.actosService.funcionarioActivo.next(funcionario);
+      }else{
+        this.warningSuccess('El usuario '+funcio.usuario+' no esta autorizado');
+        this.actosService.funcionarioActivo.next(null);
+
+      }
+    });
   }
 
 }

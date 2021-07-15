@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <form [formGroup]="funcioOfForm" (ngSubmit)="!funcioOfForm.invalid && crearFuncio(funcioOfForm.value)">
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <label for ="usuario" >
+                Nombre de usuario  *:
+              </label>
+              <input novalidate id = "usuario" class="form-control" formControlName="usuario" placeholder="usuario de red del funcionario" >
+              <div class="alert alert-danger alert-dismissible fade show"
+                   *ngIf="funcioOfForm.get('usuario').hasError('required') && funcioOfForm.get('usuario').touched" >
+                nombre del usuario es requerido </div>
+              <hr>
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary" [disabled]="!funcioOfForm.valid" >Crear</button>
+              <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

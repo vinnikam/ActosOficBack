@@ -19,7 +19,7 @@ export class ActosComponent implements OnInit {
   public txtFiltro: string = null;
 
   actos: Array<Acto>;
-  actosO: Array<Acto>;
+
 
   selected = false;
   crearacto = false;
@@ -47,19 +47,9 @@ export class ActosComponent implements OnInit {
     this.actosService.getActos()
       .subscribe(actos => {
         this.actos = actos;
-        this.actosO = this.actos;
       });
   }
-  filtrar(){
-    console.log('Ingresar ' + this.txtFiltro);
-    if (this.txtFiltro == null || this.txtFiltro === '') {
-      this.actos = this.actosO;
-    } else {
-      this.actos =  this.actos.filter(c => c.numeroIdentificacion.match(this.txtFiltro));
 
-    }
-
-  }
   crear(): void{
     this.crearacto = true;
     this.selected = false;

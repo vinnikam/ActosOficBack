@@ -1,0 +1,35 @@
+<div class="container py-5">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <label for ="usuario" >
+                Nombre de usuario  *:
+              </label>
+              <input id = "usuario" class="form-control" [(ngModel)]="funcioed.usuario" placeholder="usuario de red del funcionario" disabled="true">
+
+              <hr>
+            </div>
+            <div class="col-sm-12">
+              <label for="estado" >
+                Estado {{funcioed.estado}}
+              </label>
+              <select id="estado" class="form-select" [(ngModel)]="funcioed.estado" >
+                <option value="-1" selected>Seleccione el estado</option>
+                <option [value]="1">ACTIVO </option>
+                <option [value]="0">INACTIVO </option>
+              </select>
+              <hr>
+            </div>
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary"  (click)="actualizar()">Crear</button>
+              <button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >Cancelar</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+

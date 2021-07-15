@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="card">
+
+    <div class="col-4 p-3">
+      <h6 >Autenticar Administrador Actos Oficiales</h6>
+
+      <form [formGroup]="autentForm" (ngSubmit)="!autentForm.invalid && autenticar(autentForm.value)">
+        <label for ="usuario" >
+          Nombre de usuario
+        </label>
+        <input novalidate id = "usuario" class="form-control" formControlName="usuario" placeholder="usuario" >
+        <div class="alert alert-danger alert-dismissible fade show"
+             *ngIf="autentForm.get('usuario').hasError('required') && autentForm.get('usuario').touched" >
+          usuario es requerido </div>
+        <label for ="clave" >
+          Clave
+        </label>
+        <input  type="password" novalidate id = "clave" class="form-control" formControlName="clave" placeholder="clave" >
+        <div class="alert alert-danger alert-dismissible fade show"
+             *ngIf="autentForm.get('clave').hasError('required') && autentForm.get('clave').touched" >
+          clave es requerida </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!autentForm.valid" >Ingresar</button>
+        <!--button type="button" class="btn btn-danger ml-3" (click)="cancelar()" >volver</button-->
+
+      </form>
+    </div>
+  </div>
+</div>
