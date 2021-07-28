@@ -4,6 +4,7 @@ import {Acto} from '../../dtos/acto';
 import {Subscription} from 'rxjs';
 import {Funcionario} from '../../dtos/funcionario';
 import {UtilidadesService} from '../utilidades.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-actos',
@@ -27,6 +28,7 @@ export class ActosComponent implements OnInit {
   displayBasic: boolean;
   displayBasicEd : boolean;
   tituloDialog: string;
+
 
   constructor(public actosService: ActosService, public utilidades: UtilidadesService) { }
 
@@ -75,5 +77,21 @@ export class ActosComponent implements OnInit {
   }
   cambiaFecha(lafecha:Date): string {
     return this.utilidades.convertirFecha(lafecha);
+  }
+  exportExcel(): void {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.actos);
+      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, "products");
+    });
+  }
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
   }
 }

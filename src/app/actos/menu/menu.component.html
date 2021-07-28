@@ -5,15 +5,12 @@
     <div *ngIf="funcionarioActivo">
       Funcionario activo: {{funcioActivo.usuario}}
       <a class="btn btn-outline-success my-2 my-sm-0"   (click)="salir()" >
-      Salir Funcionario
+      Salida de Funcionario
       </a>
     </div>
     <div *ngIf="!funcionarioActivo">
       CONTRIBUYENTE ACTIVO
-    <a class="btn btn-outline-success my-2 my-sm-0"  href="actos/autenticar">
-      Ingreso Funcionario
-    </a>
-
+      <a class="btn btn-outline-success my-2 my-sm-0" routerLink="/actos/autenticar">Acceso de Funcionario</a>
   </div>
   </p-menubar>
 

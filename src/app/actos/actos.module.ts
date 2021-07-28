@@ -14,6 +14,7 @@ import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import { EditarActoComponent } from './editar-acto/editar-acto.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 
@@ -29,7 +30,8 @@ import { EditarActoComponent } from './editar-acto/editar-acto.component';
     TableModule,
     DialogModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    TooltipModule
 
   ],
   exports: [ActosComponent, CrearActoComponent, AutenticadorComponent, CrearActosComponent, MenuComponent, EditarActoComponent]
